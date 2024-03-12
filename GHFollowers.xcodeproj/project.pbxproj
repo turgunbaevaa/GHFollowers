@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A3F1EA12BA0BB8C0093C14F /* FollowerListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3F1EA02BA0BB8C0093C14F /* FollowerListVC.swift */; };
+		0A689A3E2BA094710001046C /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 0A689A3D2BA094710001046C /* SnapKit */; };
 		0A6D4C192B892E22007532EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6D4C182B892E22007532EE /* AppDelegate.swift */; };
 		0A6D4C1B2B892E22007532EE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6D4C1A2B892E22007532EE /* SceneDelegate.swift */; };
 		0A6D4C222B892E23007532EE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A6D4C212B892E23007532EE /* Assets.xcassets */; };
@@ -18,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0A3F1EA02BA0BB8C0093C14F /* FollowerListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowerListVC.swift; sourceTree = "<group>"; };
 		0A6D4C152B892E22007532EE /* GHFollowers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GHFollowers.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A6D4C182B892E22007532EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0A6D4C1A2B892E22007532EE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -35,6 +38,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A689A3E2BA094710001046C /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -60,6 +64,7 @@
 		0A6D4C172B892E22007532EE /* GHFollowers */ = {
 			isa = PBXGroup;
 			children = (
+				0A3F1EA02BA0BB8C0093C14F /* FollowerListVC.swift */,
 				0A6D4C2C2B89FB62007532EE /* SearchVC.swift */,
 				0A6D4C2E2B89FB9B007532EE /* FavoritesListVC.swift */,
 				0A6D4C302B8BEA43007532EE /* GFButton.swift */,
@@ -89,6 +94,9 @@
 			dependencies = (
 			);
 			name = GHFollowers;
+			packageProductDependencies = (
+				0A689A3D2BA094710001046C /* SnapKit */,
+			);
 			productName = GHFollowers;
 			productReference = 0A6D4C152B892E22007532EE /* GHFollowers.app */;
 			productType = "com.apple.product-type.application";
@@ -117,6 +125,9 @@
 				Base,
 			);
 			mainGroup = 0A6D4C0C2B892E22007532EE;
+			packageReferences = (
+				0A689A3C2BA094710001046C /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
 			productRefGroup = 0A6D4C162B892E22007532EE /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -147,6 +158,7 @@
 				0A6D4C2F2B89FB9B007532EE /* FavoritesListVC.swift in Sources */,
 				0A6D4C312B8BEA43007532EE /* GFButton.swift in Sources */,
 				0A6D4C2D2B89FB62007532EE /* SearchVC.swift in Sources */,
+				0A3F1EA12BA0BB8C0093C14F /* FollowerListVC.swift in Sources */,
 				0A6D4C192B892E22007532EE /* AppDelegate.swift in Sources */,
 				0A6D4C1B2B892E22007532EE /* SceneDelegate.swift in Sources */,
 			);
@@ -361,6 +373,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		0A689A3C2BA094710001046C /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.7.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		0A689A3D2BA094710001046C /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0A689A3C2BA094710001046C /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 0A6D4C0D2B892E22007532EE /* Project object */;
 }
