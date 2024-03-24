@@ -72,22 +72,54 @@
 		0A6D4C172B892E22007532EE /* GHFollowers */ = {
 			isa = PBXGroup;
 			children = (
-				0A45AC3E2BA4E4090092EDDF /* UIViewController+Ext.swift */,
-				0A45AC382BA4DBF80092EDDF /* GFTitleLabel.swift */,
-				0A45AC3A2BA4DD720092EDDF /* GFBodyLabel.swift */,
-				0A45AC3C2BA4DE460092EDDF /* GFAlertVC.swift */,
-				0A3F1EA02BA0BB8C0093C14F /* FollowerListVC.swift */,
+				0A951BB52BB0B6E00038A1CE /* Extensions */,
+				0A951BB42BB0B6A30038A1CE /* CustomViews */,
+				0A951BB32BB0B6490038A1CE /* Screens */,
+				0A951BB62BB0B71C0038A1CE /* Support */,
+			);
+			path = GHFollowers;
+			sourceTree = "<group>";
+		};
+		0A951BB32BB0B6490038A1CE /* Screens */ = {
+			isa = PBXGroup;
+			children = (
 				0A6D4C2C2B89FB62007532EE /* SearchVC.swift */,
 				0A6D4C2E2B89FB9B007532EE /* FavoritesListVC.swift */,
+				0A3F1EA02BA0BB8C0093C14F /* FollowerListVC.swift */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		0A951BB42BB0B6A30038A1CE /* CustomViews */ = {
+			isa = PBXGroup;
+			children = (
+				0A45AC382BA4DBF80092EDDF /* GFTitleLabel.swift */,
+				0A45AC3C2BA4DE460092EDDF /* GFAlertVC.swift */,
+				0A45AC3A2BA4DD720092EDDF /* GFBodyLabel.swift */,
 				0A6D4C302B8BEA43007532EE /* GFButton.swift */,
 				0A6D4C322B8BF930007532EE /* GFTextField.swift */,
+			);
+			path = CustomViews;
+			sourceTree = "<group>";
+		};
+		0A951BB52BB0B6E00038A1CE /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				0A45AC3E2BA4E4090092EDDF /* UIViewController+Ext.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		0A951BB62BB0B71C0038A1CE /* Support */ = {
+			isa = PBXGroup;
+			children = (
 				0A6D4C182B892E22007532EE /* AppDelegate.swift */,
 				0A6D4C1A2B892E22007532EE /* SceneDelegate.swift */,
 				0A6D4C212B892E23007532EE /* Assets.xcassets */,
 				0A6D4C232B892E23007532EE /* LaunchScreen.storyboard */,
 				0A6D4C262B892E23007532EE /* Info.plist */,
 			);
-			path = GHFollowers;
+			path = Support;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
