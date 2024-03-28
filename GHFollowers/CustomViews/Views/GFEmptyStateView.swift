@@ -10,7 +10,7 @@ import SnapKit
 
 class GFEmptyStateView: UIView {
     
-    let messageLabel = GFTitleLabel(textAlignment: .center, fontsize: 28)
+    let messageLabel  = GFTitleLabel(textAlignment: .center, fontsize: 28)
     let logoImageView = UIImageView()
     
     override init(frame: CGRect) {
@@ -22,34 +22,41 @@ class GFEmptyStateView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    init(message: String) {
-        super.init(frame: .zero)
+   convenience init(message: String) {
+        self.init(frame: .zero)
         messageLabel.text = message
-        configure()
     }
     
     private func configure() {
-        addSubview(messageLabel)
-        
+        addSubviews(messageLabel, logoImageView)
+        configureMessageLabel()
+        configureLogoImageView()
+    }
+    
+    private func configureMessageLabel() {        
         messageLabel.numberOfLines = 3
-        messageLabel.textColor = .secondaryLabel
+        messageLabel.textColor     = .secondaryLabel
+        
+        let messageCenterYConstant: CGFloat = DeviceTypes.isiPhoneSE || DeviceTypes.isiPhone8Zoomed ? -80 : -150
         
         messageLabel.snp.makeConstraints { make in
-            make.centerY.equalToSuperview().offset(-150)
+            make.centerY.equalToSuperview().offset(messageCenterYConstant)
             make.leading.equalToSuperview().offset(40)
             make.trailing.equalToSuperview().offset(-40)
             make.height.equalTo(200)
         }
+    }
+    
+    private func configureLogoImageView() {
+        let logoBottomConstant: CGFloat = DeviceTypes.isiPhoneSE || DeviceTypes.isiPhone8Zoomed ? 80 : 40
         
-        addSubview(logoImageView)
-        logoImageView.image = UIImage(named: "empty-state-logo")
+        logoImageView.image = Images.emptyStateLogo
         
         logoImageView.snp.makeConstraints { make in
             make.width.equalToSuperview().multipliedBy(1.3)
             make.height.equalTo(self.snp.width).multipliedBy(1.3)
             make.trailing.equalToSuperview().offset(170)
-            make.bottom.equalToSuperview().offset(40)
+            make.bottom.equalToSuperview().offset(logoBottomConstant)
         }
-        
     }
 }

@@ -10,23 +10,23 @@ import SnapKit
 
 class SearchVC: UIViewController {
     
-    let logoImgView = UIImageView()
-    
-    let userNameTF = GFTextField()
-    
-    let callToActionButton = GFButton(backgroundColor: .systemGreen, title: "Get Followers")
+    let logoImgView                 = UIImageView()
+    let userNameTF                  = GFTextField()
+    let callToActionButton          = GFButton(backgroundColor: .systemGreen, title: "Get Followers")
     
     var isUserNameEntered: Bool { return !userNameTF.text!.isEmpty }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
+        view.addSubviews(logoImgView, userNameTF, callToActionButton)
         configureLayouts()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: true)
+        userNameTF.text = ""
     }
     
     private func configureLayouts() {
@@ -37,7 +37,7 @@ class SearchVC: UIViewController {
     }
     
     func createDismissKeyboardTapGesture(){
-        let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:)))
+        let tap = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing(_:)))
         view.addGestureRecognizer(tap)
     }
     
@@ -46,18 +46,20 @@ class SearchVC: UIViewController {
             presentGFAlertOnMainThread(title: "Empty Username", message: "Please, enter a username. We need to know who to look for😀.", buttonTitle: "OK")
             return
         }
-        let followerListVC = FollowerListVC()
-        followerListVC.userName = userNameTF.text
-        followerListVC.title = userNameTF.text
+        
+        userNameTF.resignFirstResponder()
+        
+        let followerListVC = FollowerListVC(username: userNameTF.text!)
         navigationController?.pushViewController(followerListVC, animated: true)
     }
     
     func configureLogoImgView() {
-        view.addSubview(logoImgView)
-        logoImgView.image = UIImage(named: "gh-logo")
+        logoImgView.image = Images.ghLogo
         
+        let topConstraintConstant: CGFloat = DeviceTypes.isiPhoneSE || DeviceTypes.isiPhone8Zoomed ? 20 : 80
+
         logoImgView.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(80)
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(topConstraintConstant)
             make.centerX.equalTo(view.snp.centerX)
             make.height.equalTo(200)
             make.width.equalTo(200)
@@ -65,7 +67,6 @@ class SearchVC: UIViewController {
     }
     
     func configureTF() {
-        view.addSubview(userNameTF)
         userNameTF.delegate = self
         userNameTF.snp.makeConstraints { make in
             make.top.equalTo(logoImgView.snp.bottom).offset(48)
@@ -76,7 +77,6 @@ class SearchVC: UIViewController {
     }
     
     func configureCallToActionButton() {
-        view.addSubview(callToActionButton)
         callToActionButton.addTarget(self, action: #selector(pushFollowerListVC), for: .touchUpInside)
         callToActionButton.snp.makeConstraints { make in
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-50)

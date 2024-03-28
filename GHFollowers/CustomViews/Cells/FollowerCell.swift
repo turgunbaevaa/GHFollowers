@@ -11,8 +11,8 @@ import SnapKit
 class FollowerCell: UICollectionViewCell {
     
     static let reuseID = "follower_cell"
-    let avatarImgView = GFAvatarImageView(frame: .zero)
-    let userNameLabel = GFTitleLabel(textAlignment: .center, fontsize: 16)
+    let avatarImgView  = GFAvatarImageView(frame: .zero)
+    let userNameLabel  = GFTitleLabel(textAlignment: .center, fontsize: 16)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -25,12 +25,16 @@ class FollowerCell: UICollectionViewCell {
     
     func set(follower: Follower) {
         userNameLabel.text = follower.login
-        avatarImgView.downloadImage(from: follower.avatarUrl)
+        
+        NetworkManager.shared.downloadImage(from: follower.avatarUrl) { [weak self] image in
+            guard let self = self else { return }
+            DispatchQueue.main.async { self.avatarImgView.image = image }
+        }
     }
     
     private func configure() {
         let padding: CGFloat = 8
-        addSubview(avatarImgView)
+        addSubviews(avatarImgView, userNameLabel)
         avatarImgView.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(padding)
             make.leading.equalToSuperview().offset(padding)
@@ -38,7 +42,6 @@ class FollowerCell: UICollectionViewCell {
             make.height.equalTo(avatarImgView.snp.width)
         }
         
-        addSubview(userNameLabel)
         userNameLabel.snp.makeConstraints { make in
             make.top.equalTo(avatarImgView.snp.bottom).offset(padding)
             make.leading.equalToSuperview().offset(padding)

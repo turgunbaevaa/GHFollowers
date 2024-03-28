@@ -15,8 +15,8 @@ enum ItemInfoType {
 class GFItemInfoView: UIView {
 
     let symbolImgView = UIImageView()
-    let titleLabel = GFTitleLabel(textAlignment: .left, fontsize: 14)
-    let countLabel = GFTitleLabel(textAlignment: .center, fontsize: 14)
+    let titleLabel    = GFTitleLabel(textAlignment: .left, fontsize: 14)
+    let countLabel    = GFTitleLabel(textAlignment: .center, fontsize: 14)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -28,12 +28,10 @@ class GFItemInfoView: UIView {
     }
     
     private func configure() {
-        addSubview(symbolImgView)
-        addSubview(titleLabel)
-        addSubview(countLabel)
+        addSubviews(symbolImgView, titleLabel, countLabel)
         
         symbolImgView.contentMode = .scaleAspectFill
-        symbolImgView.tintColor = .label
+        symbolImgView.tintColor   = .label
         symbolImgView.snp.makeConstraints { make in
             make.top.equalTo(self.snp.top)
             make.leading.equalTo(self.snp.leading)
@@ -58,17 +56,17 @@ class GFItemInfoView: UIView {
     func set(itemInfoType: ItemInfoType, withCount count: Int) {
         switch itemInfoType {
         case .repos:
-            symbolImgView.image = UIImage(systemName: SFSymbols.repos)
-            titleLabel.text = "Public Repos"
+            symbolImgView.image = SFSymbols.repos
+            titleLabel.text     = "Public Repos"
         case .gists:
-            symbolImgView.image = UIImage(systemName: SFSymbols.gists)
-            titleLabel.text = "Public Gists"
+            symbolImgView.image = SFSymbols.gists
+            titleLabel.text     = "Public Gists"
         case .followers:
-            symbolImgView.image = UIImage(systemName: SFSymbols.followers)
-            titleLabel.text = "Followers"
+            symbolImgView.image = SFSymbols.followers
+            titleLabel.text     = "Followers"
         case .following:
-            symbolImgView.image = UIImage(systemName: SFSymbols.following)
-            titleLabel.text = "Following"
+            symbolImgView.image = SFSymbols.following
+            titleLabel.text     = "Following"
         }
         countLabel.text = String(count)
     }

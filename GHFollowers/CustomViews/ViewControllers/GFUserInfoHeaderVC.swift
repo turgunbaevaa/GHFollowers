@@ -10,12 +10,12 @@ import SnapKit
 
 class GFUserInfoHeaderVC: UIViewController {
     
-    let avatarImgView = GFAvatarImageView(frame: .zero)
-    let userNameLabel = GFTitleLabel(textAlignment: .left, fontsize: 34)
-    let nameLabel = GFSecondaryTitleLabel(fontSize: 18)
+    let avatarImgView   = GFAvatarImageView(frame: .zero)
+    let userNameLabel   = GFTitleLabel(textAlignment: .left, fontsize: 34)
+    let nameLabel       = GFSecondaryTitleLabel(fontSize: 18)
     let locationImgView = UIImageView()
-    let locationLabel = GFSecondaryTitleLabel(fontSize: 18)
-    let bioLabel = GFBodyLabel(textAlignment: .left)
+    let locationLabel   = GFSecondaryTitleLabel(fontSize: 18)
+    let bioLabel        = GFBodyLabel(textAlignment: .left)
     var user: User!
     
     init(user: User) {
@@ -36,28 +36,30 @@ class GFUserInfoHeaderVC: UIViewController {
     }
     
     func configureUIElements() {
-        avatarImgView.downloadImage(from: user.avatarUrl)
-        userNameLabel.text = user.login
-        nameLabel.text = user.name ?? ""
-        locationLabel.text = user.location ?? "No location"
-        bioLabel.text = user.bio ?? ""
-        bioLabel.numberOfLines = 3
+        downloadAvatarImage()
+        userNameLabel.text      = user.login
+        nameLabel.text          = user.name ?? ""
+        locationLabel.text      = user.location ?? "No location"
+        bioLabel.text           = user.bio ?? ""
+        bioLabel.numberOfLines  = 3
         
-        locationImgView.image = UIImage(systemName: SFSymbols.location)
+        locationImgView.image     = SFSymbols.location
         locationImgView.tintColor = .secondaryLabel
     }
     
+    func downloadAvatarImage() {
+        NetworkManager.shared.downloadImage(from: user.avatarUrl) { [weak self] image in
+            guard let self = self else { return }
+            DispatchQueue.main.async { self.avatarImgView.image = image }
+        }
+    }
+    
     func addSubViews() {
-        view.addSubview(avatarImgView)
-        view.addSubview(userNameLabel)
-        view.addSubview(nameLabel)
-        view.addSubview(locationImgView)
-        view.addSubview(locationLabel)
-        view.addSubview(bioLabel)
+        view.addSubviews(avatarImgView, userNameLabel, nameLabel, locationImgView, locationLabel, bioLabel)
     }
     
     func layoutUI() {
-        let padding: CGFloat = 20
+        let padding: CGFloat        = 20
         let textImgPadding: CGFloat = 12
         
         avatarImgView.snp.makeConstraints { make in
@@ -97,7 +99,7 @@ class GFUserInfoHeaderVC: UIViewController {
             make.top.equalTo(avatarImgView.snp.bottom).offset(textImgPadding)
             make.leading.equalTo(avatarImgView.snp.leading)
             make.trailing.equalToSuperview()
-            make.height.equalTo(60)
+            make.height.equalTo(90)
         }
     }
 }
