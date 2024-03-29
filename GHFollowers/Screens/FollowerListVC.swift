@@ -10,7 +10,7 @@ import UIKit
 class FollowerListVC: GFDataLoadingVC {
     
     enum Section { case main }
-
+    
     var username: String!
     var followers: [Follower]         = []
     var filteredFollowers: [Follower] = []
@@ -87,7 +87,7 @@ class FollowerListVC: GFDataLoadingVC {
                 if self.followers.isEmpty {
                     let message = "This user doesn't have any followers. Go follow them!"
                     DispatchQueue.main.async { self.showEmptyStateView(with: message, in: self.view) }
-                    return 
+                    return
                 }
                 self.updateData(on: self.followers)
                 
@@ -124,28 +124,32 @@ class FollowerListVC: GFDataLoadingVC {
             
             switch result {
             case .success(let user):
-                let favorite = Follower(login: user.login, avatarUrl: user.avatarUrl)
-                PersistenceManager.updateWith(favorite: favorite, actionType: .add) { [weak self] error in
-                    
-                    guard let self = self else { return }
-                    
-                    guard let error = error else {
-                        self.presentGFAlertOnMainThread(title: "Success", message: "You have succesfully favoruted this user", buttonTitle: "Hooray!")
-                        return
-                    }
-                    self.presentGFAlertOnMainThread(title: "Something went wrong", message: error.rawValue, buttonTitle: "OK")
-                }
+                self.addUserToFavorite(user: user)
             case .failure(let error):
                 self.presentGFAlertOnMainThread(title: "Something went wrong", message: error.rawValue, buttonTitle: "OK")
             }
             self.isLoadingMoreFollowers = false
         }
     }
+    
+    func addUserToFavorite(user: User) {
+        let favorite = Follower(login: user.login, avatarUrl: user.avatarUrl)
+        PersistenceManager.updateWith(favorite: favorite, actionType: .add) { [weak self] error in
+            
+            guard let self = self else { return }
+            
+            guard let error = error else {
+                self.presentGFAlertOnMainThread(title: "Success", message: "You have succesfully favoruted this user", buttonTitle: "Hooray!")
+                return
+            }
+            self.presentGFAlertOnMainThread(title: "Something went wrong", message: error.rawValue, buttonTitle: "OK")
+        }
+    }
 }
 
 extension FollowerListVC: UICollectionViewDelegate {
     
-    func scrollViewDidEndDragging(_ scrollView: UIScrollView, 
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView,
                                   willDecelerate decelerate: Bool) {
         let offsetY       = scrollView.contentOffset.y
         let contentHeight = scrollView.contentSize.height
@@ -158,7 +162,7 @@ extension FollowerListVC: UICollectionViewDelegate {
         }
     }
     
-    func collectionView(_ collectionView: UICollectionView, 
+    func collectionView(_ collectionView: UICollectionView,
                         didSelectItemAt indexPath: IndexPath) {
         let activeArray         = isSearching ? filteredFollowers : followers
         let follower            = activeArray[indexPath.item]
