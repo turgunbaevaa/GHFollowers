@@ -77,16 +77,16 @@ class UserInfoVC: GFDataLoadingVC {
         
         itemViews = [headerView, itemViewOne, itemViewTwo, dateLabel]
         for itemView in itemViews {
-            view.addSubview(itemView)
+            contentView.addSubview(itemView)
             
             itemView.snp.makeConstraints { make in
-                make.leading.equalToSuperview().offset(padding)
-                make.trailing.equalToSuperview().offset(-padding)
+                make.leading.equalTo(contentView.snp.leading).offset(padding)
+                make.trailing.equalTo(contentView.snp.trailing).offset(-padding)
             }
         }
         
         headerView.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+            make.top.equalTo(contentView.snp.top)
             make.height.equalTo(210)
         }
         

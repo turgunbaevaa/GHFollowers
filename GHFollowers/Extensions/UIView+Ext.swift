@@ -11,7 +11,7 @@ import SnapKit
 extension UIView {
     
     func pinToEdges(of superview: UIView) {
-        superview.snp.makeConstraints { make in
+        self.snp.makeConstraints { make in
             make.top.equalToSuperview()
             make.leading.equalToSuperview()
             make.trailing.equalToSuperview()
