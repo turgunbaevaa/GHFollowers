@@ -56,7 +56,7 @@ class GFEmptyStateView: UIView {
             make.width.equalToSuperview().multipliedBy(1.3)
             make.height.equalTo(self.snp.width).multipliedBy(1.3)
             make.trailing.equalToSuperview().offset(170)
-            make.bottom.equalToSuperview().offset(logoBottomConstant)
+            make.bottom.equalTo(self.safeAreaLayoutGuide.snp.bottom).offset(logoBottomConstant)
         }
     }
 }
