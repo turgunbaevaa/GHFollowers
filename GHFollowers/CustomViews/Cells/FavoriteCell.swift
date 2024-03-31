@@ -36,15 +36,15 @@ class FavoriteCell: UITableViewCell {
         let padding: CGFloat = 12
         
         avatarImgView.snp.makeConstraints { make in
-            make.centerY.equalTo(self.snp.centerY)
-            make.leading.equalTo(self.snp.leading).offset(padding)
+            make.centerY.equalToSuperview()
+            make.leading.equalToSuperview().offset(padding)
             make.height.width.equalTo(60)
         }
         
         userNameLabel.snp.makeConstraints { make in
-            make.centerY.equalTo(self.snp.centerY)
+            make.centerY.equalToSuperview()
             make.leading.equalTo(avatarImgView.snp.trailing).offset(24)
-            make.trailing.equalTo(self.snp.trailing).offset(-padding)
+            make.trailing.equalToSuperview().offset(-padding)
             make.height.equalTo(40)
         }
     }

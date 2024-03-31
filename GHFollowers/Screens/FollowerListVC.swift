@@ -75,24 +75,20 @@ class FollowerListVC: GFDataLoadingVC {
     
     func getFollowers(userName: String, page: Int) {
         showLoadingView()
-        NetworkManager.shared.getFollowers(for: userName, page: page) { [weak self] result in
-            guard let self = self else { return }
-            self.dismissLoadingView()
-            
-            switch result {
-            case .success(let followers):
-                if followers.count < 100 { self.hasMoreFollowers = false }
-                self.followers.append(contentsOf: followers)
-                
-                if self.followers.isEmpty {
-                    let message = "This user doesn't have any followers. Go follow them!"
-                    DispatchQueue.main.async { self.showEmptyStateView(with: message, in: self.view) }
-                    return
+        isLoadingMoreFollowers = true
+        
+        Task {
+            do {
+                let followers = try await NetworkManager.shared.getFollowers(for: userName, page: page)
+                updateUI(with: followers)
+                dismissLoadingView()
+            } catch {
+                if let gfError = error as? GFErrorMessage {
+                    presentGFAlert(title: "Bad stuff happen", message: gfError.rawValue, buttonTitle: "OK")
+                } else {
+                    presentDefaultError()
                 }
-                self.updateData(on: self.followers)
-                
-            case .failure(let error):
-                self.presentGFAlertOnMainThread(title: "Bad stuff happen", message: error.rawValue, buttonTitle: "OK")
+                dismissLoadingView()
             }
         }
     }
@@ -118,17 +114,19 @@ class FollowerListVC: GFDataLoadingVC {
         showLoadingView()
         isLoadingMoreFollowers = true
         
-        NetworkManager.shared.getUserInfo(for: username) { [weak self] result in
-            guard let self = self else { return }
-            self.dismissLoadingView()
-            
-            switch result {
-            case .success(let user):
-                self.addUserToFavorite(user: user)
-            case .failure(let error):
-                self.presentGFAlertOnMainThread(title: "Something went wrong", message: error.rawValue, buttonTitle: "OK")
+        Task {
+            do {
+                let user = try await NetworkManager.shared.getUserInfo(for: username)
+                addUserToFavorite(user: user)
+                dismissLoadingView()
+            } catch {
+                if let gfError = error as? GFErrorMessage {
+                    presentGFAlert(title: "Something went wrong", message: gfError.rawValue, buttonTitle: "OK")
+                } else {
+                    presentDefaultError()
+                }
+                dismissLoadingView()
             }
-            self.isLoadingMoreFollowers = false
         }
     }
     
@@ -139,11 +137,28 @@ class FollowerListVC: GFDataLoadingVC {
             guard let self = self else { return }
             
             guard let error = error else {
-                self.presentGFAlertOnMainThread(title: "Success", message: "You have succesfully favoruted this user", buttonTitle: "Hooray!")
+                DispatchQueue.main.async {
+                    self.presentGFAlert(title: "Success", message: "You have succesfully favoruted this user", buttonTitle: "Hooray!")
+                }
                 return
             }
-            self.presentGFAlertOnMainThread(title: "Something went wrong", message: error.rawValue, buttonTitle: "OK")
+            DispatchQueue.main.async {
+                self.presentGFAlert(title: "Something went wrong", message: error.rawValue, buttonTitle: "OK")
+            }
         }
+    }
+    
+    func updateUI(with followers: [Follower]) {
+        if followers.count < 100 { self.hasMoreFollowers = false }
+        self.followers.append(contentsOf: followers)
+        
+        if self.followers.isEmpty {
+            let message = "This user doesn't have any followers. Go follow them 😀."
+            DispatchQueue.main.async { self.showEmptyStateView(with: message, in: self.view) }
+            return
+        }
+        
+        self.updateData(on: self.followers)
     }
 }
 
