@@ -12,12 +12,12 @@ class FollowerListVC: GFDataLoadingVC {
     enum Section { case main }
     
     var username: String!
-    var followers: [Follower]         = []
+    var followers: [Follower] = []
     var filteredFollowers: [Follower] = []
-    var isSearching                   = false
-    var page                          = 1
-    var hasMoreFollowers              = true
-    var isLoadingMoreFollowers        = false
+    var isSearching = false
+    var page = 1
+    var hasMoreFollowers = true
+    var isLoadingMoreFollowers = false
     
     var collectionView: UICollectionView!
     var datasource: UICollectionViewDiffableDataSource<Section, Follower>!
@@ -25,7 +25,7 @@ class FollowerListVC: GFDataLoadingVC {
     init(username: String) {
         super.init(nibName: nil, bundle: nil)
         self.username = username
-        title         = username
+        title = username
     }
     
     required init?(coder: NSCoder) {
@@ -37,9 +37,7 @@ class FollowerListVC: GFDataLoadingVC {
         configureViewController()
         configureSearchController()
         configureCollectionView()
-        
         getFollowers(userName: username, page: page)
-        
         configureDataSource()
     }
     
@@ -67,10 +65,10 @@ class FollowerListVC: GFDataLoadingVC {
     
     func configureSearchController() {
         let searchController = UISearchController()
-        searchController.searchResultsUpdater                 = self
-        searchController.searchBar.placeholder                = "Search for a username"
+        searchController.searchResultsUpdater = self
+        searchController.searchBar.placeholder = "Search for a username"
         searchController.obscuresBackgroundDuringPresentation = false
-        navigationItem.searchController                       = searchController
+        navigationItem.searchController = searchController
     }
     
     func getFollowers(userName: String, page: Int) {
@@ -166,9 +164,9 @@ extension FollowerListVC: UICollectionViewDelegate {
     
     func scrollViewDidEndDragging(_ scrollView: UIScrollView,
                                   willDecelerate decelerate: Bool) {
-        let offsetY       = scrollView.contentOffset.y
+        let offsetY = scrollView.contentOffset.y
         let contentHeight = scrollView.contentSize.height
-        let height        = scrollView.frame.size.height
+        let height = scrollView.frame.size.height
         
         if offsetY > contentHeight - height {
             guard hasMoreFollowers, isLoadingMoreFollowers else { return }
@@ -179,13 +177,13 @@ extension FollowerListVC: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView,
                         didSelectItemAt indexPath: IndexPath) {
-        let activeArray         = isSearching ? filteredFollowers : followers
-        let follower            = activeArray[indexPath.item]
+        let activeArray = isSearching ? filteredFollowers : followers
+        let follower = activeArray[indexPath.item]
         
-        let destinationVC       = UserInfoVC()
-        destinationVC.userName  = follower.login
-        destinationVC.delegate  = self
-        let navController       = UINavigationController(rootViewController: destinationVC)
+        let destinationVC = UserInfoVC()
+        destinationVC.userName = follower.login
+        destinationVC.delegate = self
+        let navController = UINavigationController(rootViewController: destinationVC)
         present(navController, animated: true)
     }
 }

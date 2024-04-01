@@ -15,8 +15,8 @@ enum ItemInfoType {
 class GFItemInfoView: UIView {
 
     let symbolImgView = UIImageView()
-    let titleLabel    = GFTitleLabel(textAlignment: .left, fontsize: 14)
-    let countLabel    = GFTitleLabel(textAlignment: .center, fontsize: 14)
+    let titleLabel = GFTitleLabel(textAlignment: .left, fontsize: 14)
+    let countLabel = GFTitleLabel(textAlignment: .center, fontsize: 14)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -31,7 +31,7 @@ class GFItemInfoView: UIView {
         addSubviews(symbolImgView, titleLabel, countLabel)
         
         symbolImgView.contentMode = .scaleAspectFill
-        symbolImgView.tintColor   = .label
+        symbolImgView.tintColor = .label
         symbolImgView.snp.makeConstraints { make in
             make.top.equalTo(self.snp.top)
             make.leading.equalTo(self.snp.leading)
@@ -57,16 +57,16 @@ class GFItemInfoView: UIView {
         switch itemInfoType {
         case .repos:
             symbolImgView.image = SFSymbols.repos
-            titleLabel.text     = "Public Repos"
+            titleLabel.text = "Public Repos"
         case .gists:
             symbolImgView.image = SFSymbols.gists
-            titleLabel.text     = "Public Gists"
+            titleLabel.text = "Public Gists"
         case .followers:
             symbolImgView.image = SFSymbols.followers
-            titleLabel.text     = "Followers"
+            titleLabel.text = "Followers"
         case .following:
             symbolImgView.image = SFSymbols.following
-            titleLabel.text     = "Following"
+            titleLabel.text = "Following"
         }
         countLabel.text = String(count)
     }

@@ -11,9 +11,9 @@ import SnapKit
 class GFAlertVC: UIViewController {
     
     let containerView = GFAlertContainerView()
-    let titleLabel    = GFTitleLabel(textAlignment: .center, fontsize: 20)
-    let messageLabel  = GFBodyLabel(textAlignment: .center)
-    let actionButton  = GFButton(color: .systemPink, title: "OK", systemImageName: "checkmark.circle")
+    let titleLabel = GFTitleLabel(textAlignment: .center, fontsize: 20)
+    let messageLabel = GFBodyLabel(textAlignment: .center)
+    let actionButton = GFButton(color: .systemPink, title: "OK", systemImageName: "checkmark.circle")
 
     var alertTitle: String?
     var message: String?
@@ -23,8 +23,8 @@ class GFAlertVC: UIViewController {
     
     init(title: String, message: String, buttonTitle: String) {
         super.init(nibName: nil, bundle: nil)
-        self.alertTitle  = title
-        self.message     = message
+        self.alertTitle = title
+        self.message = message
         self.buttonTitle = buttonTitle
     }
     

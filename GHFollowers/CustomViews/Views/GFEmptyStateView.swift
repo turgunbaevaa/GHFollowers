@@ -10,7 +10,7 @@ import SnapKit
 
 class GFEmptyStateView: UIView {
     
-    let messageLabel  = GFTitleLabel(textAlignment: .center, fontsize: 28)
+    let messageLabel = GFTitleLabel(textAlignment: .center, fontsize: 28)
     let logoImageView = UIImageView()
     
     override init(frame: CGRect) {
@@ -35,7 +35,7 @@ class GFEmptyStateView: UIView {
     
     private func configureMessageLabel() {        
         messageLabel.numberOfLines = 3
-        messageLabel.textColor     = .secondaryLabel
+        messageLabel.textColor = .secondaryLabel
         
         let messageCenterYConstant: CGFloat = DeviceTypes.isiPhoneSE || DeviceTypes.isiPhone8Zoomed ? -80 : -150
         

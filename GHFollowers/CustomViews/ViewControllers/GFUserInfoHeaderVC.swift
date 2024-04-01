@@ -10,12 +10,12 @@ import SnapKit
 
 class GFUserInfoHeaderVC: UIViewController {
     
-    let avatarImgView   = GFAvatarImageView(frame: .zero)
-    let userNameLabel   = GFTitleLabel(textAlignment: .left, fontsize: 34)
-    let nameLabel       = GFSecondaryTitleLabel(fontSize: 18)
+    let avatarImgView = GFAvatarImageView(frame: .zero)
+    let userNameLabel = GFTitleLabel(textAlignment: .left, fontsize: 34)
+    let nameLabel = GFSecondaryTitleLabel(fontSize: 18)
     let locationImgView = UIImageView()
-    let locationLabel   = GFSecondaryTitleLabel(fontSize: 18)
-    let bioLabel        = GFBodyLabel(textAlignment: .left)
+    let locationLabel = GFSecondaryTitleLabel(fontSize: 18)
+    let bioLabel = GFBodyLabel(textAlignment: .left)
     var user: User!
     
     init(user: User) {
@@ -29,7 +29,6 @@ class GFUserInfoHeaderVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         addSubViews()
         layoutUI()
         configureUIElements()
@@ -37,13 +36,13 @@ class GFUserInfoHeaderVC: UIViewController {
     
     func configureUIElements() {
         avatarImgView.downloadImage(fromURL: user.avatarUrl)
-        userNameLabel.text      = user.login
-        nameLabel.text          = user.name ?? ""
-        locationLabel.text      = user.location ?? "No location"
-        bioLabel.text           = user.bio ?? ""
+        userNameLabel.text = user.login
+        nameLabel.text = user.name ?? ""
+        locationLabel.text = user.location ?? "No location"
+        bioLabel.text = user.bio ?? ""
         bioLabel.numberOfLines  = 3
         
-        locationImgView.image     = SFSymbols.location
+        locationImgView.image = SFSymbols.location
         locationImgView.tintColor = .secondaryLabel
     }
     
@@ -52,7 +51,7 @@ class GFUserInfoHeaderVC: UIViewController {
     }
     
     func layoutUI() {
-        let padding: CGFloat        = 20
+        let padding: CGFloat = 20
         let textImgPadding: CGFloat = 12
         
         avatarImgView.snp.makeConstraints { make in

@@ -11,8 +11,8 @@ import SnapKit
 class FollowerCell: UICollectionViewCell {
     
     static let reuseID = "follower_cell"
-    let avatarImgView  = GFAvatarImageView(frame: .zero)
-    let userNameLabel  = GFTitleLabel(textAlignment: .center, fontsize: 16)
+    let avatarImgView = GFAvatarImageView(frame: .zero)
+    let userNameLabel = GFTitleLabel(textAlignment: .center, fontsize: 16)
     
     override init(frame: CGRect) {
         super.init(frame: frame)

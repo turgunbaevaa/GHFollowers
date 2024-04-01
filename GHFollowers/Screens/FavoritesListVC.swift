@@ -9,7 +9,7 @@ import UIKit
 
 class FavoritesListVC: GFDataLoadingVC {
     
-    let tableView             = UITableView()
+    let tableView = UITableView()
     var favorites: [Follower] = []
     
     
@@ -27,16 +27,16 @@ class FavoritesListVC: GFDataLoadingVC {
     
     func configureViewController() {
         view.backgroundColor = .systemBackground
-        title                = "Favorites"
+        title = "Favorites"
         navigationController?.navigationBar.prefersLargeTitles = true
     }
     
     func configureTableView() {
         view.addSubview(tableView)
-        tableView.frame      = view.bounds
-        tableView.rowHeight  = 80
+        tableView.frame = view.bounds
+        tableView.rowHeight = 80
         
-        tableView.delegate   = self
+        tableView.delegate = self
         tableView.dataSource = self
         tableView.removeExcessCells()
         tableView.register(FavoriteCell.self, forCellReuseIdentifier: FavoriteCell.reuseID)
@@ -81,7 +81,7 @@ extension FavoritesListVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView,
                    cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell     = tableView.dequeueReusableCell(withIdentifier: FavoriteCell.reuseID) as! FavoriteCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: FavoriteCell.reuseID) as! FavoriteCell
         let favorite = favorites[indexPath.row]
         cell.set(favorite: favorite)
         return cell
@@ -89,8 +89,8 @@ extension FavoritesListVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView,
                    didSelectRowAt indexPath: IndexPath) {
-        let favorite    = favorites[indexPath.row]
-        let destVC      = FollowerListVC(username: favorite.login)
+        let favorite = favorites[indexPath.row]
+        let destVC = FollowerListVC(username: favorite.login)
         navigationController?.pushViewController(destVC, animated: true)
     }
     

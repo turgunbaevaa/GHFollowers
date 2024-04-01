@@ -11,8 +11,8 @@ import SnapKit
 class FavoriteCell: UITableViewCell {
 
     static let reuseID = "favorite_cell"
-    let avatarImgView  = GFAvatarImageView(frame: .zero)
-    let userNameLabel  = GFTitleLabel(textAlignment: .left, fontsize: 26)
+    let avatarImgView = GFAvatarImageView(frame: .zero)
+    let userNameLabel = GFTitleLabel(textAlignment: .left, fontsize: 26)
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -32,7 +32,7 @@ class FavoriteCell: UITableViewCell {
     private func configure() {
         addSubviews(avatarImgView, userNameLabel)
         
-        accessoryType        = .disclosureIndicator
+        accessoryType = .disclosureIndicator
         let padding: CGFloat = 12
         
         avatarImgView.snp.makeConstraints { make in
