@@ -68,7 +68,7 @@ cd GHFollowers
 
 ## Demo Images
 <details>
-<summary>Main Screen</summary>
+<summary> Images: </summary>
 
 ### Main Search Screen:
 
