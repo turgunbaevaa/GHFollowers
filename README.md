@@ -70,8 +70,8 @@ cd GHFollowers
 <details>
 <summary>Main Screen</summary>
   
-![Search for developer](https://github.com/turgunbaevaa/GHFollowers/tree/main/GHFollowers/Support/Assets.xcassets/gh-main-screen.imageset)
+![Search for developer](https://github.com/turgunbaevaa/GHFollowers/blob/main/GHFollowers/Support/Assets.xcassets/gh-main-screen.imageset/gh-main-screen.png)
 
-![Search with empty username](https://github.com/turgunbaevaa/GHFollowers/tree/main/GHFollowers/Support/Assets.xcassets/gh-error-search.imageset)
+![Search with empty username](GHFollowers/Support/Assets.xcassets/gh-error-search.imageset/gh-error-search.png)
   
 </details>
