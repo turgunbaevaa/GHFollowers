@@ -70,6 +70,10 @@ cd GHFollowers
 <details>
 <summary>Main Screen</summary>
   
-![Search for developer](Assets/gh-main-screen.png)
+![Search for developer]
+(Assets/gh-main-screen)
+
+![Search with empty username]
+(Assets/gh-error-search)
   
 </details>
