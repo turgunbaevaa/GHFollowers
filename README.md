@@ -69,9 +69,66 @@ cd GHFollowers
 ## Demo Images
 <details>
 <summary>Main Screen</summary>
-  
-![Search for developer](https://github.com/turgunbaevaa/GHFollowers/blob/main/GHFollowers/Support/Assets.xcassets/gh-main-screen.imageset/gh-main-screen.png)
+
+### Main Search Screen:
+
+![Search for developer](GHFollowers/Support/Assets.xcassets/gh-main-screen.imageset/gh-main-screen.png)
+
+### Search with username:
+
+![Search with username](GHFollowers/Support/Assets.xcassets/gh-search-for-dev-on-main.imageset/gh-search-for-dev-on-main.png)
+
+### Search with empty username:
 
 ![Search with empty username](GHFollowers/Support/Assets.xcassets/gh-error-search.imageset/gh-error-search.png)
-  
+
+### Search with undefined username:
+
+![Search with undefined username](GHFollowers/Support/Assets.xcassets/gh-search-for-undefined-dev.imageset/gh-search-for-undefined-dev.png)
+
+### Loading Followers List:
+
+![Loading Followers List](GHFollowers/Support/Assets.xcassets/gh-followers-list-loading-img.imageset/gh-followers-list-loading-img.png)
+
+### Loaded Followers List:
+
+![Loaded Followers List](GHFollowers/Support/Assets.xcassets/gh-followers-list-loaded.imageset/gh-followers-list-loaded.png)
+
+### Developer's bio:
+
+![Developer's bio](GHFollowers/Support/Assets.xcassets/gh-devs-bio.imageset/gh-devs-bio.png)
+
+### Developer's github profile:
+
+![Developer's github profile](GHFollowers/Support/Assets.xcassets/gh-github-profile.imageset/gh-github-profile.png)
+
+### Developer's follower's list:
+
+![Developer's follower's list](GHFollowers/Support/Assets.xcassets/hg-devs-follower-list.imageset/hg-devs-follower-list.png)
+
+### Add developer to favorite list:
+
+![Add developer to favorite list](GHFollowers/Support/Assets.xcassets/gh-add-to-favorite-list.imageset/gh-add-to-favorite-list.png)
+
+### Favorite list:
+
+![Favorite list](GHFollowers/Support/Assets.xcassets/gh-favorite-list.imageset/gh-favorite-list.png)
+
+### Delete from favorite list:
+
+![Delete from favorite list](GHFollowers/Support/Assets.xcassets/gh-delete-from-fav-list.imageset/gh-delete-from-fav-list.png)
+
+### Empty favorite list:
+
+![Empty favorite list](GHFollowers/Support/Assets.xcassets/gh-empty-fav-list.imageset/gh-empty-fav-list.png)
+
+### Empty favorite list:
+
+![Empty favorite list](GHFollowers/Support/Assets.xcassets/gh-empty-fav-list.imageset/gh-empty-fav-list.png)
+
+### Developer with no followers:
+
+![Developer with no followers](GHFollowers/Support/Assets.xcassets/gh-dev-with-no-followers.imageset/gh-dev-with-no-followers.png)
+
+
 </details>
