@@ -66,8 +66,9 @@ cd GHFollowers
 [REST API endpoints for followers](https://docs.github.com/en/rest/users/followers?apiVersion=2022-11-28)
 
 
+## Demo Images
 <details>
-<summary># Demo Images</summary>
+<summary>Main Screen</summary>
   
 ![Search for developer](Assets/gh-main-screen.png)
   
