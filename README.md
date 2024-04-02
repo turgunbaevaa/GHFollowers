@@ -122,10 +122,6 @@ cd GHFollowers
 
 ![Empty favorite list](GHFollowers/Support/Assets.xcassets/gh-empty-fav-list.imageset/gh-empty-fav-list.png)
 
-### Empty favorite list:
-
-![Empty favorite list](GHFollowers/Support/Assets.xcassets/gh-empty-fav-list.imageset/gh-empty-fav-list.png)
-
 ### Developer with no followers:
 
 ![Developer with no followers](GHFollowers/Support/Assets.xcassets/gh-dev-with-no-followers.imageset/gh-dev-with-no-followers.png)
